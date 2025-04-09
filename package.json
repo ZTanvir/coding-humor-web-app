@@ -1,0 +1,37 @@
+{
+  "name": "coding-humor-web-app",
+  "version": "1.0.0",
+  "description": "Need a break from debugging? Dive into the lighter side of the digital world! Coding humor is your daily dose of coding humor, packed with jokes, memes, and relatable content for developers, tech enthusiasts, and anyone who's ever battled a semicolon.",
+  "keywords": [
+    "NODE",
+    "EJS",
+    "EXPRESS",
+    "POSTGRESQL",
+    "BLOG"
+  ],
+  "homepage": "https://github.com/ZTanvir/coding-humor-web-app#readme",
+  "bugs": {
+    "url": "https://github.com/ZTanvir/coding-humor-web-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZTanvir/coding-humor-web-app.git"
+  },
+  "license": "MIT",
+  "author": "Zahirul Islam",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "pg": "^8.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
