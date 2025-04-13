@@ -1,0 +1,19 @@
+.navbar {
+  padding: 0;
+}
+.navbar li {
+  list-style: none;
+}
+.navbar li a {
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+.navbar > .home-link {
+  margin-right: auto;
+}
