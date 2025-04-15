@@ -4,12 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <link rel="stylesheet" href="../public/styles/reset.css" />
-    <link rel="stylesheet" href="../public/styles/partials/navbar.css" />
     <link rel="stylesheet" href="../public/styles/homepage.css" />
   </head>
   <body>
     <header><%-include("partials/navbar") %></header>
+    <main>
+      <h1>CodingHumor</h1>
+      <p>Where Code Meets Comedy</p>
+      <p>
+        <button><a href="/post">Take a Peek</a></button>
+      </p>
+      <p>
+        😐 Tired of staring at error messages that make no sense? Need a break
+        from debugging that one bug that only happens in production? You’re in
+        the right place.
+      </p>
+      <p>
+        😁 Whether you're a seasoned coder, a newbie still figuring out Git, or
+        just someone who enjoys watching developers suffer (looking at you,
+        project managers), we’ve got something for you.
+      </p>
+      <p>
+        😍 So grab some coffee, open a new Stack Overflow tab (just in case),
+        and dive into the world where code is buggy, deadlines are a joke, and
+        the only thing running smoothly is our humor.
+      </p>
+    </main>
     <footer><%-include("partials/footer") %></footer>
   </body>
 </html>

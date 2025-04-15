@@ -65,3 +65,8 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+body {
+  --text-color: #16db65;
+  --text-hover-color: yellow;
+}
