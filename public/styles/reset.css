@@ -65,8 +65,18 @@ h6 {
 #__next {
   isolation: isolate;
 }
+html,
+body {
+  height: 100%;
+}
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
 
 body {
   --text-color: #16db65;
   --text-hover-color: yellow;
+  --website-bg-color: #0f0f0f;
+  --content-bg-color: #0b2213;
 }

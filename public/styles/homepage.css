@@ -1,3 +1,47 @@
 @import "./reset.css";
 @import "./partials/navbar.css";
 @import "./partials/footer.css";
+body {
+  background-color: var(--website-bg-color);
+}
+#home-page {
+  display: flex;
+  flex-direction: column;
+}
+#home-page > main {
+  max-width: 1400px;
+}
+.title {
+  font-size: 4rem;
+  color: #d3d3d3;
+}
+.subtitle {
+  color: var(--text-color);
+  font-size: 1.5rem;
+}
+:is(.title, .subtitle) {
+  text-align: center;
+}
+.visit-posts-btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--content-bg-color);
+  cursor: pointer;
+}
+footer {
+  margin-top: auto;
+}
+[data-center][data-center] {
+  --maxWidth: initial;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  max-inline-size: var(--maxWidth, 100%);
+}
+[data-center~="center-children"] {
+  display: grid;
+  justify-content: center;
+}
+[data-center~="center-text"] {
+  text-align: center;
+}

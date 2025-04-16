@@ -1,6 +1,6 @@
 .navbar {
   gap: 1rem;
-  background-color: #0b2213;
+  background-color: var(--content-bg-color);
   border-radius: 10rem;
   margin: 1rem 0.5rem 0rem 0.5rem;
   font-size: 1.25rem;
