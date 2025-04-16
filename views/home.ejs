@@ -8,14 +8,19 @@
   </head>
   <body id="home-page">
     <header><%-include("partials/navbar") %></header>
-    <main data-center="center-text center-children">
+    <main
+      data-stack
+      data-center="center-text center-children"
+      style="--gutter: 0.5rem"
+    >
       <h1 class="title">CodingHumor</h1>
       <p class="subtitle">Where Code Meets Comedy</p>
       <p>
         <button class="visit-posts-btn">
-          <a href="/post"
+          <a data-inline href="/post"
             >Take a Peek
             <svg
+              inline-children-center="align-center"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"

@@ -1,8 +1,38 @@
 <nav>
   <ul class="navbar">
-    <li class="home-link"><a href="/">CodingHumor</a></li>
-    <li><a href="/posts">Posts</a></li>
-    <li><a href="/sign-in">Sign In</a></li>
-    <li><a href="/sign-up">Sign Up</a></li>
+    <input type="checkbox" name="nav-bar" id="nav-menu" />
+    <label class="nav-open-btn" for="nav-menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="40px"
+        viewBox="0 -960 960 960"
+        width="40px"
+        fill="#16db65"
+      >
+        <path
+          d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z"
+        />
+      </svg>
+    </label>
+
+    <div class="nav-links">
+      <label class="nav-close-btn" for="nav-menu">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="40px"
+          viewBox="0 -960 960 960"
+          width="40px"
+          fill="#16db65"
+        >
+          <path
+            d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"
+          />
+        </svg>
+      </label>
+      <li class="home-link"><a href="/">CodingHumor</a></li>
+      <li><a href="/posts">Posts</a></li>
+      <li><a href="/sign-in">Sign In</a></li>
+      <li><a href="/sign-up">Sign Up</a></li>
+    </div>
   </ul>
 </nav>
