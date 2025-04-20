@@ -1,0 +1,11 @@
+@import "../reset.css";
+@import "../partials/navbar.css";
+@import "../partials/footer.css";
+
+#sign-up-page {
+  display: flex;
+  flex-direction: column;
+}
+#sign-up-page > footer {
+  margin-top: auto;
+}
