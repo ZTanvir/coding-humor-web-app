@@ -9,6 +9,7 @@
 }
 main {
   padding: 1rem;
+  max-width: 1400px;
 }
 #sign-up-page > footer {
   margin-top: auto;
@@ -75,6 +76,9 @@ main {
 }
 
 @media screen and (max-width: 600px) {
+  main {
+    width: 100%;
+  }
   .title {
     margin-top: 0;
     font-size: 1.5rem;
@@ -86,5 +90,15 @@ main {
       #sign-up-form button[type="submit"]
     ) {
     font-size: 1rem;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  main {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  #sign-up-form {
+    width: 600px;
   }
 }
