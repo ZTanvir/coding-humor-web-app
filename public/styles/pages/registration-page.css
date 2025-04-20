@@ -5,7 +5,86 @@
 #sign-up-page {
   display: flex;
   flex-direction: column;
+  background-color: var(--website-bg-color);
+}
+main {
+  padding: 1rem;
 }
 #sign-up-page > footer {
   margin-top: auto;
+}
+.title {
+  margin-top: 3rem;
+  background-color: var(--content-bg-color);
+  color: white;
+  padding: 1rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+#sign-up-form {
+  background-color: #161a1d;
+  padding: 1rem;
+  overflow: hidden;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+#sign-up-form label {
+  color: var(--text-color);
+  font-size: 1.2rem;
+}
+#sign-up-form input {
+  line-height: 1;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  background-color: var(--content-bg-color);
+  color: white;
+  border-bottom: 1px solid var(--text-color);
+}
+#sign-up-form button[type="submit"] {
+  justify-self: start;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  border: 0;
+  cursor: pointer;
+}
+[data-center] {
+  --maxWidth: initial;
+  max-inline-size: var(--maxWidth, 100%);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+[data-center~="center-children"] {
+  display: grid;
+  justify-content: center;
+}
+[data-center~="text-center"] {
+  text-align: center;
+}
+
+[data-stack] {
+  --gutter: initial;
+  display: grid;
+  gap: var(--gutter, 0px);
+  align-content: start;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+
+  :is(
+      #sign-up-form label,
+      #sign-up-form input,
+      #sign-up-form button[type="submit"]
+    ) {
+    font-size: 1rem;
+  }
 }

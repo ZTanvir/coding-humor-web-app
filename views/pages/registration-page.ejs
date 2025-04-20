@@ -13,26 +13,59 @@
   <body id="sign-up-page">
     <header><%-include("../partials/navbar") %></header>
     <main>
-      <form action="/sign-up" method="post">
-        <div>
+      <h1 class="title" data-center>WELCOME ONBOARD!</h1>
+      <form
+        id="sign-up-form"
+        action="/sign-up"
+        method="post"
+        data-center
+        style="--gutter: 1rem"
+        data-stack
+      >
+        <div data-stack style="--gutter: 0.25rem">
           <label for="username">Username</label>
-          <input type="text" name="username" id="username" />
+          <input
+            type="text"
+            name="username"
+            id="username"
+            title="Please fill out this field."
+          />
         </div>
-        <div>
+        <div data-stack>
           <label for="password">Password:</label>
-          <input type="password" name="password" id="password" />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            title="Please fill out this field."
+          />
         </div>
-        <div>
+        <div data-stack>
           <label for="confirmPassword">Confirm Password:</label>
-          <input type="password" name="confirmPassword" id="confirmPassword" />
+          <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            title="Please fill out this field."
+          />
         </div>
-        <div>
+        <div data-stack>
           <label for="fname">First name:</label>
-          <input type="text" name="fname" id="fname" />
+          <input
+            type="text"
+            name="fname"
+            id="fname"
+            title="Please fill out this field."
+          />
         </div>
-        <div>
+        <div data-stack>
           <label for="lname">Last name:</label>
-          <input type="text" name="lname" id="lname" />
+          <input
+            type="text"
+            name="lname"
+            id="lname"
+            title="Please fill out this field."
+          />
         </div>
         <button type="submit">Sign Up</button>
       </form>
