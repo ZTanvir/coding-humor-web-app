@@ -20,8 +20,10 @@ const getUserRegistrationForm = async (req, res) => {
 
 const postUserRegistrationForm = async (req, res) => {
   const errors = validationResult(req);
+  console.log(errors);
+
   if (errors.isEmpty()) {
-    return res.status(200).json({ msg: "No errors" });
+    return res.status(200).json({ form: req.body });
   }
   res.render("../views/pages/registration-page", {
     errors: errors["errors"],
