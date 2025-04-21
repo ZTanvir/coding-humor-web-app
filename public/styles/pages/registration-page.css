@@ -54,6 +54,13 @@ main {
   border: 0;
   cursor: pointer;
 }
+.error-msg {
+  display: inline-block;
+  min-height: 1rem;
+  padding: 0.25rem 0rem;
+  color: red;
+}
+
 [data-center] {
   --maxWidth: initial;
   max-inline-size: var(--maxWidth, 100%);
