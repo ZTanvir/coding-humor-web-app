@@ -8,4 +8,6 @@ userRoute.post(
   userControllers.postUserRegistrationForm
 );
 
+userRoute.get("/sign-in", userControllers.getUserLoginForm);
+
 module.exports = userRoute;

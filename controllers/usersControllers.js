@@ -30,7 +30,10 @@ const signupValidator = [
 ];
 
 const getUserRegistrationForm = async (req, res) => {
-  res.render("../views/pages/registration-page", { errors: [], formData: {} });
+  return res.render("../views/pages/registration-page", {
+    errors: [],
+    formData: {},
+  });
 };
 
 const postUserRegistrationForm = async (req, res) => {
@@ -64,8 +67,13 @@ const postUserRegistrationForm = async (req, res) => {
   });
 };
 
+const getUserLoginForm = (req, res) => {
+  return res.render("../views/pages/login-page");
+};
+
 module.exports = {
   getUserRegistrationForm,
   postUserRegistrationForm,
   signupValidator,
+  getUserLoginForm,
 };
