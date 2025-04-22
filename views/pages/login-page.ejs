@@ -6,17 +6,17 @@
     <title>Login</title>
     <link rel="stylesheet" href="../../public/styles/pages/login-page.css" />
   </head>
-  <body>
+  <body id="sign-in-page">
     <header><%-include("../partials/navbar") %></header>
-    <main>
-      <h1>WELCOME BACK!</h1>
-      <form id="login-form" action="/auth/sign-in" method="post">
-        <div>
-          <label for="username"></label>
+    <main data-stack data-center>
+      <h1 class="title">WELCOME BACK!</h1>
+      <form id="login-form" action="/auth/sign-in" method="post" data-stack>
+        <div data-stack>
+          <label for="username">Username</label>
           <input type="text" name="username" id="username" />
         </div>
-        <div>
-          <label for="password"></label>
+        <div data-stack>
+          <label for="password">Password</label>
           <input type="password" name="password" id="password" />
         </div>
         <button type="submit">Sign In</button>
