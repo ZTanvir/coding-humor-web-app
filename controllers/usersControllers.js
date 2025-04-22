@@ -30,15 +30,15 @@ const signupValidator = [
 ];
 
 const getUserRegistrationForm = async (req, res) => {
-  res.render("../views/pages/registration-page", { errors: [] });
+  res.render("../views/pages/registration-page", { errors: [], formData: {} });
 };
 
 const postUserRegistrationForm = async (req, res) => {
   const errors = validationResult(req);
   console.log(errors);
+  const { username, password, fname, lname } = req.body;
 
   if (errors.isEmpty()) {
-    const { username, password, fname, lname } = req.body;
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
     try {
@@ -50,10 +50,17 @@ const postUserRegistrationForm = async (req, res) => {
       console.log("Error while adding user to users table", error);
     }
 
-    return res.status(200).json({ form: req.body });
+    return res.redirect("/");
   }
   res.render("../views/pages/registration-page", {
     errors: errors["errors"],
+    formData: {
+      username,
+      password,
+      confirmPassword: req.body.confirmPassword,
+      fname,
+      lname,
+    },
   });
 };
 

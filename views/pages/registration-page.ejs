@@ -12,7 +12,9 @@
   </head>
   <body id="sign-up-page">
     <header><%-include("../partials/navbar") %></header>
-    
+
+    <p><%= JSON.stringify(formData) %></p>
+
     <main data-center>
       <h1 class="title" data-center>WELCOME ONBOARD!</h1>
       <form
@@ -24,12 +26,8 @@
       >
         <div data-stack style="--gutter: 0.25rem">
           <label for="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            title="Please fill out this field."
-          />
+          <input type="text" name="username" id="username" title="Please fill
+          out this field." value="<%=formData["username"] %>" />
           <span class="error-msg">
             <% errors.forEach(err => {if (err.path==="username") {%> <%= err.msg
             %> <% }}) %>
@@ -37,12 +35,8 @@
         </div>
         <div data-stack>
           <label for="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            title="Please fill out this field."
-          />
+          <input type="password" name="password" id="password" title="Please
+          fill out this field." value="<%=formData["password"] %>" />
           <span class="error-msg">
             <% errors.forEach(err => {if (err.path==="password") {%> <%= err.msg
             %> <% }}) %>
@@ -50,12 +44,9 @@
         </div>
         <div data-stack>
           <label for="confirmPassword">Confirm Password:</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            title="Please fill out this field."
-          />
+          <input type="password" name="confirmPassword" id="confirmPassword"
+          title="Please fill out this field."
+          value="<%=formData["confirmPassword"] %>" />
           <span class="error-msg">
             <% errors.forEach(err => {if (err.path==="confirmPassword") {%> <%=
             err.msg %> <% }}) %>
@@ -63,12 +54,8 @@
         </div>
         <div data-stack>
           <label for="fname">First name:</label>
-          <input
-            type="text"
-            name="fname"
-            id="fname"
-            title="Please fill out this field."
-          />
+          <input type="text" name="fname" id="fname" title="Please fill out this
+          field." value="<%=formData["fname"] %>" />
           <span class="error-msg">
             <% errors.forEach(err => {if (err.path==="fname") {%> <%= err.msg %>
             <% }}) %>
@@ -76,12 +63,8 @@
         </div>
         <div data-stack>
           <label for="lname">Last name:</label>
-          <input
-            type="text"
-            name="lname"
-            id="lname"
-            title="Please fill out this field."
-          />
+          <input type="text" name="lname" id="lname" title="Please fill out this
+          field." value="<%=formData["lname"] %>" />
           <span class="error-msg">
             <% errors.forEach(err => {if (err.path==="lname") {%> <%= err.msg %>
             <% }}) %>
