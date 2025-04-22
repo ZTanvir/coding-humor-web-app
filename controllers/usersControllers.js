@@ -8,10 +8,12 @@ const signupValidator = [
     min: 6,
   }),
   body("confirmPassword")
+    .isLength({ min: 6 })
+    .withMessage("The minimum password length is 6 characters.")
     .custom((value, { req }) => {
       return value === req.body.password;
     })
-    .withMessage("Password don't match."),
+    .withMessage("Confirm Password don't match with password."),
   body("fname", "First name can't be empty.").not().isEmpty(),
   body("lname", "Last name can't be empty.").not().isEmpty(),
 ];
