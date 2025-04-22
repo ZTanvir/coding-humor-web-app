@@ -13,11 +13,22 @@
       <form id="login-form" action="/auth/sign-in" method="post" data-stack>
         <div data-stack>
           <label for="username">Username</label>
-          <input type="text" name="username" id="username" />
+          <input type="text" name="username" id="username"
+          value="<%=formData["username"] %>"/>
+          <span class="error-msg">
+            <% errors.forEach(err => {if (err.path==="username") {%> <%= err.msg
+            %> <% }}) %>
+          </span>
         </div>
+
         <div data-stack>
           <label for="password">Password</label>
-          <input type="password" name="password" id="password" />
+          <input type="password" name="password" id="password"
+          value="<%=formData["password"] %>"/>
+          <span class="error-msg">
+            <% errors.forEach(err => {if (err.path==="password") {%> <%= err.msg
+            %> <% }}) %>
+          </span>
         </div>
         <button type="submit">Sign In</button>
       </form>

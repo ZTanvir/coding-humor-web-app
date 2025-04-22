@@ -55,7 +55,7 @@ const postUserRegistrationForm = async (req, res) => {
 
     return res.redirect("/");
   }
-  res.render("../views/pages/registration-page", {
+  return res.render("../views/pages/registration-page", {
     errors: errors["errors"],
     formData: {
       username,
@@ -67,8 +67,27 @@ const postUserRegistrationForm = async (req, res) => {
   });
 };
 
+const signInValidator = [
+  body("username").not().isEmpty().withMessage("Please enter your username."),
+  body("password").not().isEmpty().withMessage("Please enter your password."),
+];
+
 const getUserLoginForm = (req, res) => {
-  return res.render("../views/pages/login-page");
+  return res.render("../views/pages/login-page", {
+    errors: [],
+    formData: {},
+  });
+};
+const postUserLoginForm = (req, res) => {
+  const errors = validationResult(req);
+  const { username, password } = req.body;
+
+  if (errors.isEmpty()) {
+  }
+  return res.render("../views/pages/login-page", {
+    errors: errors["errors"],
+    formData: { username, password },
+  });
 };
 
 module.exports = {
@@ -76,4 +95,6 @@ module.exports = {
   postUserRegistrationForm,
   signupValidator,
   getUserLoginForm,
+  postUserLoginForm,
+  signInValidator,
 };

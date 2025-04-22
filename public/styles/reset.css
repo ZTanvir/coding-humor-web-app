@@ -80,4 +80,5 @@ body {
   --website-bg-color: #0f0f0f;
   --content-bg-color: #0b2213;
   --form-bg: #161a1d;
+  --error-color: red;
 }

@@ -48,6 +48,12 @@ footer {
   border: 0;
   cursor: pointer;
 }
+.error-msg {
+  display: inline-block;
+  min-height: 1rem;
+  padding: 0.25rem 0rem;
+  color: var(--error-color);
+}
 
 [data-stack] {
   --gutter: initial;

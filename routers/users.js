@@ -9,5 +9,10 @@ userRoute.post(
 );
 
 userRoute.get("/sign-in", userControllers.getUserLoginForm);
+userRoute.post(
+  "/sign-in",
+  userControllers.signInValidator,
+  userControllers.postUserLoginForm
+);
 
 module.exports = userRoute;
