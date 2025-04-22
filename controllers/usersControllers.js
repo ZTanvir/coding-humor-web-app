@@ -3,7 +3,18 @@ const db = require("../config/database");
 const bcrypt = require("bcryptjs");
 
 const signupValidator = [
-  body("username", "Username can't be empty.").not().isEmpty(),
+  body("username")
+    .not()
+    .isEmpty()
+    .withMessage("Username can't be empty.")
+    .custom(async (value, { req }) => {
+      const { rows } = await db.query("SELECT * FROM users WHERE username=$1", [
+        req.body.username,
+      ]);
+      if (rows.length > 0) {
+        throw new Error("User already exists.");
+      }
+    }),
   body("password", "The minimum password length is 6 characters.").isLength({
     min: 6,
   }),
