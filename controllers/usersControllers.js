@@ -68,8 +68,48 @@ const postUserRegistrationForm = async (req, res) => {
 };
 
 const signInValidator = [
-  body("username").not().isEmpty().withMessage("Please enter your username."),
-  body("password").not().isEmpty().withMessage("Please enter your password."),
+  body("username")
+    .not()
+    .isEmpty()
+    .withMessage("Please enter your username.")
+    .custom(async (value, { req }) => {
+      const { rows } = await db.query("SELECT * FROM users WHERE username=$1", [
+        req.body.username,
+      ]);
+      if (rows.length === 0) {
+        throw new Error("Incorrect username.");
+      }
+    }),
+  body("password")
+    .not()
+    .isEmpty()
+    .withMessage("Please enter your password.")
+    .custom(async (value, { req }) => {
+      let isUserValid = false;
+      const { rows } = await db.query("SELECT * FROM users WHERE username=$1", [
+        req.body.username,
+      ]);
+      if (rows.length > 0) {
+        isUserValid = true;
+      }
+
+      if (isUserValid) {
+        const { rows } = await db.query(
+          "SELECT password FROM users WHERE username=$1",
+          [req.body.username]
+        );
+        const encryptedPassword = rows[0].password;
+
+        const comparePassword = await bcrypt.compare(
+          req.body.password,
+          encryptedPassword
+        );
+
+        if (!comparePassword) {
+          throw new Error("Incorrect password.");
+        }
+      }
+    }),
 ];
 
 const getUserLoginForm = (req, res) => {
