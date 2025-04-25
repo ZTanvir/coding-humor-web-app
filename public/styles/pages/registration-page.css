@@ -58,7 +58,7 @@ main {
   display: inline-block;
   min-height: 1rem;
   padding: 0.25rem 0rem;
-  color: var(--color-red);
+  color: var(--error-color);
 }
 
 [data-center] {
