@@ -38,22 +38,21 @@ const getUserRegistrationForm = async (req, res) => {
 
 const postUserRegistrationForm = async (req, res) => {
   const errors = validationResult(req);
-  console.log(errors);
   const { username, password, fname, lname } = req.body;
 
   if (errors.isEmpty()) {
-    const salt = await bcrypt.genSalt(10);
-    const hashPassword = await bcrypt.hash(password, salt);
-    try {
-      await db.query(
-        "INSERT INTO users(first_name,last_name,username,password,is_admin,is_member) VALUES($1,$2,$3,$4,$5,$6)",
-        [fname, lname, username, hashPassword, false, false]
-      );
-    } catch (error) {
-      console.log("Error while adding user to users table", error);
-    }
+    // const salt = await bcrypt.genSalt(10);
+    // const hashPassword = await bcrypt.hash(password, salt);
+    // try {
+    //   await db.query(
+    //     "INSERT INTO users(first_name,last_name,username,password,is_admin,is_member) VALUES($1,$2,$3,$4,$5,$6)",
+    //     [fname, lname, username, hashPassword, false, false]
+    //   );
+    // } catch (error) {
+    //   console.log("Error while adding user to users table", error);
+    // }
 
-    return res.redirect("/");
+    return res.redirect("/auth/sign-in?account-created=1");
   }
   return res.render("../views/pages/registration-page", {
     errors: errors["errors"],
@@ -113,9 +112,13 @@ const signInValidator = [
 ];
 
 const getUserLoginForm = (req, res) => {
+  const newUser = req.query["account-created"];
+  console.log(newUser);
+
   return res.render("../views/pages/login-page", {
     errors: [],
     formData: {},
+    newUser,
   });
 };
 const postUserLoginForm = (req, res) => {
@@ -127,6 +130,7 @@ const postUserLoginForm = (req, res) => {
   return res.render("../views/pages/login-page", {
     errors: errors["errors"],
     formData: { username, password },
+    newUser: "0",
   });
 };
 

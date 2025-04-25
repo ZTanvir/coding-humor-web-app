@@ -54,6 +54,17 @@ footer {
   padding: 0.25rem 0rem;
   color: var(--error-color);
 }
+:is(.new-account-msg, .sign-in-msg) {
+  padding: 0.5rem;
+  color: #06d49f;
+  background-color: #0d4436;
+  border-radius: 6px;
+  border-color: #06d49f;
+  font-size: 1.25rem;
+}
+.sign-in-msg {
+  margin-top: 1rem;
+}
 
 [data-stack] {
   --gutter: initial;
@@ -66,6 +77,15 @@ footer {
   max-inline-size: var(--minWidth, 100%);
   margin-inline-start: auto;
   margin-inline-end: auto;
+}
+
+[display-inline] {
+  --gutter: initial;
+  display: grid;
+  gap: var(--gutter, 0px);
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: start;
 }
 @media screen and (max-width: 600px) {
   main {
