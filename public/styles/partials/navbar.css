@@ -22,7 +22,8 @@
 .nav-links li a {
   color: var(--text-color);
   text-decoration: none;
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 1rem 2rem;
 }
 

@@ -32,9 +32,16 @@ app.use(
 );
 app.use(passport.authenticate("session"));
 
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.use("/auth", usersRouter);
 
 app.get("/", async (req, res) => {
+  console.log(res.locals.currentUser);
+
   res.render("home", { title: "Coding Humor" });
 });
 

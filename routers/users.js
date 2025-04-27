@@ -21,4 +21,6 @@ userRoute.post(
   userControllers.postUserLoginForm
 );
 
+userRoute.get("/sign-out", userControllers.logOut);
+
 module.exports = userRoute;
