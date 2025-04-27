@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 const expressSession = require("express-session");
+const passport = require("passport");
 const pgSession = require("connect-pg-simple")(expressSession);
 const db = require("./config/database");
 const usersRouter = require("./routers/users");
@@ -29,6 +30,7 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use(passport.authenticate("session"));
 
 app.use("/auth", usersRouter);
 
