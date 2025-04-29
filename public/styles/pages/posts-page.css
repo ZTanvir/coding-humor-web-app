@@ -1,0 +1,38 @@
+@import "../reset.css";
+@import "../partials/navbar.css";
+@import "../partials/footer.css";
+
+#posts-page {
+  background-color: var(--website-bg-color);
+  display: flex;
+  flex-direction: column;
+}
+#posts-page main {
+  padding: 1rem;
+}
+.alert-msg {
+  background-color: var(--alert-msg-bg);
+  padding: 0.75rem;
+  border-radius: 6px;
+  overflow: hidden;
+  align-items: center;
+  color: #f1f13c;
+  border: 1px solid #f1f13c;
+  font-size: 18px;
+}
+.alert-msg a {
+  color: #f1f13c;
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: auto;
+}
+
+[data-inline] {
+  --gutter: initial;
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--gutter, 0px);
+  justify-content: start;
+}

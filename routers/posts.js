@@ -2,7 +2,9 @@ const express = require("express");
 const postRoutes = express.Router();
 
 postRoutes.get("/posts", (req, res) => {
-  return res.render("");
+  console.log(res.locals.currentUser);
+
+  return res.render("pages/posts-page");
 });
 
 module.exports = postRoutes;
