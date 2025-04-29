@@ -40,8 +40,6 @@ app.use((req, res, next) => {
 app.use("/auth", usersRouter);
 
 app.get("/", async (req, res) => {
-  console.log(res.locals.currentUser);
-
   res.render("home", { title: "Coding Humor" });
 });
 
