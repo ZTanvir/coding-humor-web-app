@@ -8,11 +8,13 @@
   </head>
   <body id="posts-page">
     <header><%- include("../partials/navbar") %></header>
-    <p>current user:<%= JSON.stringify(locals.currentUser) %></p>
     <main>
       <%if(locals.currentUser !== undefined){ %>
       <!-- User has logged in-->
-      <p><%= locals.currentUser.username %></p>
+      <div class="posts" data-stack style="--gutter: 1rem">
+        <% posts.forEach(post => { %> <%- include("../partials/post",{post}) %>
+        <% }) %>
+      </div>
       <% }else{ %>
       <div>
         <div style="--gutter: 1rem" data-inline class="alert-msg">
@@ -34,6 +36,10 @@
             <a href="/auth/sign-up">Sign-up</a> to view authors and timestamps
             of posts.</span
           >
+        </div>
+        <div class="posts" data-stack style="--gutter: 1rem">
+          <% posts.forEach(post => { %> <%- include("../partials/post",{post})
+          %> <% }) %>
         </div>
       </div>
       <% } %>

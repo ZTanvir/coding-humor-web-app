@@ -1,0 +1,39 @@
+.post {
+  background-color: var(--content-bg-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.post-title__text {
+  font-size: 1.5rem;
+  color: white;
+}
+.post-author-time {
+  color: var(--text-color);
+}
+.post-author,
+.post-time {
+  padding: 0.125rem 0.5rem;
+  background-color: #04471c;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.post-text {
+  color: white;
+}
+
+[data-inline] {
+  --gutter: initial;
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--gutter, 0px);
+  justify-content: start;
+  align-items: center;
+}
+
+[data-stack] {
+  --gutter: initial;
+  display: grid;
+  gap: var(--gutter, 0px);
+  align-content: start;
+}

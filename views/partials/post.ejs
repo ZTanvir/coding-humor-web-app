@@ -1,21 +1,26 @@
-<section>
-  <header>
-    <div>
+<section
+  style="--gutter: 0.75rem"
+  class="post"
+  data-stack
+  data-postId="<%post.post_id%>"
+>
+  <header style="--gutter: 0.75rem" data-stack>
+    <div style="--gutter: 0.5rem" data-inline class="post-title">
       <span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="20px"
+          height="30px"
           viewBox="0 -960 960 960"
-          width="20px"
+          width="30px"
           fill="#16DB65"
         >
           <path d="M432-192v-480H240v-96h480v96H528v480h-96Z" />
         </svg>
       </span>
-      <span><%= post.title %></span>
+      <span class="post-title__text"><%= post.title %></span>
     </div>
-    <div>
-      <span>
+    <div style="--gutter: 1rem" data-inline class="post-author-time">
+      <span style="--gutter: 0.5rem" data-inline class="post-author">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="20px"
@@ -27,9 +32,9 @@
             d="M480-480q-60 0-102-42t-42-102q0-60 42-102t102-42q60 0 102 42t42 102q0 60-42 102t-102 42ZM192-192v-96q0-23 12.5-43.5T239-366q55-32 116.29-49 61.29-17 124.5-17t124.71 17Q666-398 721-366q22 13 34.5 34t12.5 44v96H192Zm72-72h432v-24q0-5.18-3.03-9.41-3.02-4.24-7.97-6.59-46-28-98-42t-107-14q-55 0-107 14t-98 42q-5 4-8 7.72-3 3.73-3 8.28v24Zm216.21-288Q510-552 531-573.21t21-51Q552-654 530.79-675t-51-21Q450-696 429-674.79t-21 51Q408-594 429.21-573t51 21Zm-.21-72Zm0 360Z"
           />
         </svg>
-        <%= post.username %></span
+        <%= locals.currentUser!== undefined? post.username:"???" %></span
       >
-      <span
+      <span style="--gutter: 0.5rem" data-inline class="post-time"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           height="20px"
@@ -39,10 +44,12 @@
         >
           <path
             d="m614-310 51-51-149-149v-210h-72v240l170 170ZM480-96q-79.38 0-149.19-30T208.5-208.5Q156-261 126-330.96t-30-149.5Q96-560 126-630q30-70 82.5-122t122.46-82q69.96-30 149.5-30t149.55 30.24q70 30.24 121.79 82.08 51.78 51.84 81.99 121.92Q864-559.68 864-480q0 79.38-30 149.19T752-208.5Q700-156 629.87-126T480-96Zm0-384Zm.48 312q129.47 0 220.5-91.5Q792-351 792-480.48q0-129.47-91.02-220.5Q609.95-792 480.48-792 351-792 259.5-700.98 168-609.95 168-480.48 168-351 259.5-259.5T480.48-168Z"
-          /></svg
-        ><%= post.created_at %></span
+          />
+        </svg>
+        <%= locals.currentUser!== undefined? new
+        Date(post.created_at).toLocaleDateString():"???" %></span
       >
     </div>
   </header>
-  <article></article>
+  <article class="post-text"><%= post.post %></article>
 </section>

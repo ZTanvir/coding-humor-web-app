@@ -1,6 +1,7 @@
 @import "../reset.css";
 @import "../partials/navbar.css";
 @import "../partials/footer.css";
+@import "../partials/post.css";
 
 #posts-page {
   background-color: var(--website-bg-color);
@@ -19,6 +20,7 @@
   color: #f1f13c;
   border: 1px solid #f1f13c;
   font-size: 18px;
+  margin-bottom: 2rem;
 }
 .alert-msg a {
   color: #f1f13c;
@@ -35,4 +37,11 @@ footer {
   grid-auto-flow: column;
   gap: var(--gutter, 0px);
   justify-content: start;
+}
+
+[data-stack] {
+  --gutter: initial;
+  display: grid;
+  gap: var(--gutter, 0rem);
+  align-content: start;
 }
