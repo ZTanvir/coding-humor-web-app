@@ -7,6 +7,7 @@ const pgSession = require("connect-pg-simple")(expressSession);
 const db = require("./config/database");
 const usersRouter = require("./routers/users");
 const postsRouter = require("./routers/posts");
+const profileRouter = require("./routers/profile");
 const config = require("./utils/config");
 
 const app = express();
@@ -40,6 +41,7 @@ app.use((req, res, next) => {
 
 app.use("/auth", usersRouter);
 app.use("/", postsRouter);
+app.use("/profile", profileRouter);
 
 app.get("/", async (req, res) => {
   res.render("home", { title: "Coding Humor" });

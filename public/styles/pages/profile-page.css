@@ -1,0 +1,63 @@
+@import "../reset.css";
+@import "../partials/navbar.css";
+@import "../partials/footer.css";
+@import "../partials/post.css";
+
+#profile-page {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--website-bg-color);
+}
+main {
+  padding: 1rem;
+}
+.user-card {
+  background-color: var(--content-bg-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  width: fit-content;
+  padding: 2rem;
+}
+.user-card-img {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.username,
+.member-status {
+  color: white;
+}
+.username {
+  text-transform: capitalize;
+}
+.not-found-msg {
+  font-size: 2rem;
+  color: white;
+}
+[data-center] {
+  max-inline-size: var(--maxWidth, 100%);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+[data-center~="center-children"] {
+  display: grid;
+  justify-content: center;
+}
+[data-center~="center-text"] {
+  text-align: center;
+}
+[data-stack] {
+  --gutter: initial;
+  display: grid;
+  align-content: start;
+  gap: var(--gutter, 0px);
+}
+[data-inline] {
+  --gutter: initial;
+  display: grid;
+  gap: var(--gutter, 0rem);
+  justify-content: start;
+}
+
+footer {
+  margin-top: auto;
+}
