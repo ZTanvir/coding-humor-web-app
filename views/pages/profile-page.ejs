@@ -28,7 +28,8 @@
               />
             </svg>
           </span>
-          Looks like you are not a member.Click here to upgrade membership
+          Looks like you are not a member.Click
+          <span class="dialog-open-btn">here</span> to upgrade membership
           status.
         </p>
         <% } %>
@@ -79,7 +80,7 @@
       <!-- User not found -->
       <h2 class="not-found-msg" data-center="center-text">User not found.</h2>
       <%} %>
-      <dialog open class="membership-riddle">
+      <dialog class="membership-riddle">
         <section>
           <article data-stack style="--gutter: 0.25rem" class="riddle-question">
             <p>
@@ -101,7 +102,7 @@
           </article>
           <form
             action="/profile/riddle-answer"
-            method="get"
+            method="post"
             data-stack
             style="--gutter: 0.5rem"
           >

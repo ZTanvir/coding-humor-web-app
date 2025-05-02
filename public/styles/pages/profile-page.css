@@ -46,6 +46,27 @@ main {
   margin-bottom: 2rem;
 }
 
+.membership-riddle {
+  position: fixed;
+  color: white;
+  background-color: #171c3e;
+  padding: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.membership-riddle::backdrop {
+  background-color: hsl(250, 100%, 50%, 0.25);
+}
+
+.dialog-open-btn {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 [data-center] {
   max-inline-size: var(--maxWidth, 100%);
   margin-inline-start: auto;
