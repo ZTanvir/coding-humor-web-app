@@ -33,6 +33,19 @@ main {
   font-size: 2rem;
   color: white;
 }
+
+.alert-msg {
+  background-color: var(--alert-msg-bg);
+  padding: 0.75rem;
+  border-radius: 6px;
+  overflow: hidden;
+  align-items: center;
+  color: #f1f13c;
+  border: 1px solid #f1f13c;
+  font-size: 18px;
+  margin-bottom: 2rem;
+}
+
 [data-center] {
   max-inline-size: var(--maxWidth, 100%);
   margin-inline-start: auto;
