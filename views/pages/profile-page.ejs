@@ -14,7 +14,7 @@
       <!-- user found -->
       <div data-stack style="--gutter: 1rem">
         <% if (userData.is_member === false) { %>
-        <p data-inline class="alert-msg" style="--gutter: 0.25rem">
+        <div data-inline class="alert-msg" style="--gutter: 0.25rem">
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,10 +28,12 @@
               />
             </svg>
           </span>
-          Looks like you are not a member.Click
-          <span class="dialog-open-btn">here</span> to upgrade membership
-          status.
-        </p>
+          <p>
+            Looks like you are not a member.Click
+            <span class="dialog-open-btn">here</span> to upgrade membership
+            status.
+          </p>
+        </div>
         <% } %>
         <section
           data-center
@@ -87,27 +89,38 @@
               I bring each thought to a distinct close, Though no spoken word
               ever flows.
             </p>
+
             <p>
               In Python's embrace, I might disappear, But in C's strict land, my
               presence is clear.
             </p>
+
             <p>
               Without me, the compiler will surely complain, Marking the
               boundary, again and again.
             </p>
-            <p>What am I, this tiny but vital sign?</p>
+
+            <p>What am I,this tiny but vital sign?</p>
             <p>Hints:</p>
             <p>In C: <code> printf("Hello world"); </code></p>
             <p>In Python:<code> print("Hello world") </code></p>
           </article>
           <form
-            action="/profile/riddle-answer"
-            method="post"
+            data-userid="<%= userData.user_id %>"
+            action="/profile/<%=userData.user_id%>"
+            id="membership-form"
+            method="get"
             data-stack
             style="--gutter: 0.5rem"
           >
             <label for="riddle_answer">Answer:</label>
-            <input type="text" name="riddle_answer" id="riddle_answer" />
+            <input
+              type="text"
+              name="riddle_answer"
+              id="riddle_answer"
+              required
+            />
+            <p class="error-msg"></p>
             <div data-inline style="--gutter: 0.5rem">
               <button formmethod="dialog" type="submit">Cancel</button>
               <button type="submit">Submit</button>

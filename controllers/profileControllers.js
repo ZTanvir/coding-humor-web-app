@@ -4,6 +4,16 @@ const getProfile = async (req, res) => {
   const useId = req.params.id;
   let userData = null;
   let posts = null;
+
+  // check the answer to update membership status
+  const { riddle_answer } = req.query;
+  console.log({ riddle_answer });
+  if (riddle_answer) {
+    try {
+      // change isMember in users table
+    } catch (error) {}
+  }
+
   try {
     const { rows } = await db.query("SELECT * FROM users WHERE user_id=$1", [
       useId,
@@ -17,13 +27,10 @@ const getProfile = async (req, res) => {
     const { rows } = await db.query("SELECT * FROM posts WHERE user_id=$1", [
       useId,
     ]);
-    console.log("post rows,", rows);
-
     posts = [...rows];
   } catch (error) {
     console.log("Error while getting posts table data:", error);
   }
-  console.log(userData, posts);
 
   res.render("../views/pages/profile-page", { userData, posts });
 };
