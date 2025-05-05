@@ -7,11 +7,19 @@ const getProfile = async (req, res) => {
 
   // check the answer to update membership status
   const { riddle_answer } = req.query;
-  console.log({ riddle_answer });
+  console.log({ riddle_answer }, res.locals.currentUser);
   if (riddle_answer) {
+    const currentLoginUserId = res.locals.currentUser.userId;
     try {
-      // change isMember in users table
-    } catch (error) {}
+      // change isMember status in users table
+      const result = await db.query(
+        "UPDATE users SET is_member = 'pending' WHERE user_id=$1;",
+        [currentLoginUserId]
+      );
+      console.log("Rows updated:", result.rowCount);
+    } catch (error) {
+      console.log("Error while updating is_member row in user table:", error);
+    }
   }
 
   try {

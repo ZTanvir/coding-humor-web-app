@@ -34,6 +34,18 @@ const createDbTable = async () => {
     console.error("Error on creating users and posts table,", error);
   }
 };
+const alterTable = async () => {
+  try {
+    await pool.query(
+      "ALTER TABLE users ALTER COLUMN is_member TYPE VARCHAR (15);"
+    );
+  } catch (error) {
+    console.error(
+      "Error on altering is_member column from users table,",
+      error
+    );
+  }
+};
 
 const connectToDb = async () => {
   try {
@@ -46,5 +58,6 @@ const connectToDb = async () => {
 };
 connectToDb();
 createDbTable();
+alterTable();
 
 module.exports = new Pool({ connectionString });
