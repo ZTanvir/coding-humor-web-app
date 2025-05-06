@@ -9,11 +9,15 @@
   <body id="profile-page">
     <header><%- include("../partials/navbar") %></header>
     <p><%= JSON.stringify(userData) %></p>
+    <p><%= JSON.stringify(locals.currentUser) %></p>
+
     <main>
       <% if(userData){ %>
       <!-- user found -->
       <div data-stack style="--gutter: 1rem">
-        <% if (userData.is_member === "false") { %>
+        <!-- for only logged in user -->
+        <% if (locals.currentUser.is_member === "false") { %>
+        <!-- Not a member -->
         <div data-inline class="alert-msg" style="--gutter: 0.25rem">
           <span>
             <svg
@@ -34,7 +38,8 @@
             status.
           </p>
         </div>
-        <% }else if(userData.is_member === "pending"){ %>
+        <% }else if(locals.currentUser.is_member === "pending"){ %>
+        <!-- send request to update membership status -->
         <div data-inline class="alert-msg" style="--gutter: 0.25rem">
           <span>
             <svg
@@ -96,58 +101,62 @@
           </h2>
           <% } %>
         </div>
+        <dialog class="membership-riddle">
+          <section>
+            <article
+              data-stack
+              style="--gutter: 0.25rem"
+              class="riddle-question"
+            >
+              <p>
+                I bring each thought to a distinct close, Though no spoken word
+                ever flows.
+              </p>
+
+              <p>
+                In Python's embrace, I might disappear, But in C's strict land,
+                my presence is clear.
+              </p>
+
+              <p>
+                Without me, the compiler will surely complain, Marking the
+                boundary, again and again.
+              </p>
+
+              <p>What am I,this tiny but vital sign?</p>
+              <p>Hints:</p>
+              <p>In C: <code> printf("Hello world"); </code></p>
+              <p>In Python:<code> print("Hello world") </code></p>
+            </article>
+            <form
+              data-userid="<%= userData.user_id %>"
+              action="/profile/<%=userData.user_id%>"
+              id="membership-form"
+              method="get"
+              data-stack
+              style="--gutter: 0.5rem"
+            >
+              <label for="riddle_answer">Answer:</label>
+              <input
+                type="text"
+                name="riddle_answer"
+                id="riddle_answer"
+                required
+              />
+              <p class="error-msg"></p>
+              <div data-inline style="--gutter: 0.5rem">
+                <button formmethod="dialog" type="submit">Cancel</button>
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+          </section>
+        </dialog>
       </div>
 
       <% }else{ %>
       <!-- User not found -->
       <h2 class="not-found-msg" data-center="center-text">User not found.</h2>
       <%} %>
-      <dialog class="membership-riddle">
-        <section>
-          <article data-stack style="--gutter: 0.25rem" class="riddle-question">
-            <p>
-              I bring each thought to a distinct close, Though no spoken word
-              ever flows.
-            </p>
-
-            <p>
-              In Python's embrace, I might disappear, But in C's strict land, my
-              presence is clear.
-            </p>
-
-            <p>
-              Without me, the compiler will surely complain, Marking the
-              boundary, again and again.
-            </p>
-
-            <p>What am I,this tiny but vital sign?</p>
-            <p>Hints:</p>
-            <p>In C: <code> printf("Hello world"); </code></p>
-            <p>In Python:<code> print("Hello world") </code></p>
-          </article>
-          <form
-            data-userid="<%= userData.user_id %>"
-            action="/profile/<%=userData.user_id%>"
-            id="membership-form"
-            method="get"
-            data-stack
-            style="--gutter: 0.5rem"
-          >
-            <label for="riddle_answer">Answer:</label>
-            <input
-              type="text"
-              name="riddle_answer"
-              id="riddle_answer"
-              required
-            />
-            <p class="error-msg"></p>
-            <div data-inline style="--gutter: 0.5rem">
-              <button formmethod="dialog" type="submit">Cancel</button>
-              <button type="submit">Submit</button>
-            </div>
-          </form>
-        </section>
-      </dialog>
     </main>
     <footer><%- include("../partials/footer") %></footer>
     <script src="../../public/js/profile-page.js"></script>

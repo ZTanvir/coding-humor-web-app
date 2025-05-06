@@ -58,6 +58,6 @@ const connectToDb = async () => {
 };
 connectToDb();
 createDbTable();
-alterTable();
+// alterTable();
 
 module.exports = new Pool({ connectionString });

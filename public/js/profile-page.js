@@ -22,7 +22,6 @@ dialog.addEventListener("click", (e) => {
 });
 
 membershipForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
   const answer = String(riddleAnswer.value).trim().toLowerCase();
   const userId = e.target.dataset.userid;
 
@@ -35,6 +34,7 @@ membershipForm.addEventListener("submit", async (e) => {
     fetch(url);
   } else {
     // add error msg to the screen
+    e.preventDefault();
     errorMsg.textContent = "Incorrect answer, please try again.";
     e.target.reset();
   }

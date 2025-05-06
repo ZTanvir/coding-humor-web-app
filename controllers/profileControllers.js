@@ -9,7 +9,7 @@ const getProfile = async (req, res) => {
   const { riddle_answer } = req.query;
   console.log({ riddle_answer }, res.locals.currentUser);
   if (riddle_answer) {
-    const currentLoginUserId = res.locals.currentUser.userId;
+    const currentLoginUserId = res.locals.currentUser.user_id;
     try {
       // change isMember status in users table
       const result = await db.query(
