@@ -112,7 +112,7 @@ const signInValidator = [
 ];
 
 const getUserLoginForm = (req, res) => {
-  const newUser = req.query["account-created"];
+  const newUser = req.query["account-created"] ? true : false;
 
   return res.render("../views/pages/login-page", {
     errors: [],

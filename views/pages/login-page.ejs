@@ -9,7 +9,8 @@
   <body id="sign-in-page">
     <header><%-include("../partials/navbar") %></header>
     <main data-stack data-center>
-      <% if(newUser === "1"){ %>
+      <!-- Display bellow message for recently sign up users -->
+      <% if(newUser === true){ %>
       <div class="new-account-msg" display-inline style="--gutter: 1rem">
         <svg
           xmlns="http://www.w3.org/2000/svg"
