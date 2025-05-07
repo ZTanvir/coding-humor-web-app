@@ -18,6 +18,7 @@ app.set("public", path.join(__dirname, "public"));
 app.use(morgan("dev"));
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(
   expressSession({
     store: new pgSession({

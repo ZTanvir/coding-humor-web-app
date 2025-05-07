@@ -10,14 +10,17 @@
     <header><%- include("../partials/navbar") %></header>
     <p><%= JSON.stringify(userData) %></p>
     <p><%= JSON.stringify(locals.currentUser) %></p>
+    <p><%= JSON.stringify(updateMembershipRequest) %></p>
 
     <main>
       <% if(userData){ %>
       <!-- user found -->
       <div data-stack style="--gutter: 1rem">
         <!-- for only logged in user -->
-        <% if (locals.currentUser.is_member === "false") { %>
-        <!-- Not a member -->
+        <!-- when user is admin-->
+        <%if(locals.currentUser.is_admin === false){
+        if(locals.currentUser.is_member === "false") { %>
+        <!-- User is not a member -->
         <div data-inline class="alert-msg" style="--gutter: 0.25rem">
           <span>
             <svg
@@ -59,7 +62,7 @@
             confirmation has been made.
           </p>
         </div>
-        <% } %>
+        <% }} %>
         <section
           data-center
           data-stack
@@ -93,6 +96,19 @@
             <% } %>
           </div>
         </section>
+        <%if(locals.currentUser.is_admin === true){%>
+        <!-- Display list of
+        username who wants to update their membership status -->
+        <section
+          class="membership-requests"
+          style="--gutter: 1rem"
+          data-split="fraction:1/1"
+          data-center
+        >
+          <%updateMembershipRequest.forEach(member=>{%>
+          <%-include("../partials/memberShipRequests",{member}) %> <%});%>
+        </section>
+        <%}%>
         <div class="user-posts">
           <% if(posts.length>0){ %> <% posts.forEach(post => {%> <%-
           include("../partials/post",{post}) %> <%}); %> <% }else{ %>

@@ -68,6 +68,29 @@ main {
 .error-msg {
   color: red;
 }
+.membership-requests {
+  background-color: var(--content-bg-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.member-table-header {
+  font-size: 1.5rem;
+}
+.member-username {
+  font-size: 1.2rem;
+}
+.member-table-header,
+.member-username {
+  color: white;
+}
+.member-btn-approve,
+.member-btn-deny {
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  width: 100px;
+}
 
 [data-center] {
   max-inline-size: var(--maxWidth, 100%);
@@ -94,7 +117,14 @@ main {
   grid-auto-flow: column;
   justify-content: start;
 }
-
+[data-split] {
+  --gutter: var(--gutter);
+  display: grid;
+  gap: var(--gutter, 0rem);
+}
+[data-split~="fraction:1/1"] {
+  grid-template-columns: 1fr 1fr;
+}
 footer {
   margin-top: auto;
 }

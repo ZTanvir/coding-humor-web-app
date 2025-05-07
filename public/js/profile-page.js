@@ -3,10 +3,15 @@ const dialogOpenBtn = document.querySelector(".dialog-open-btn");
 const membershipForm = document.querySelector("#membership-form");
 const riddleAnswer = document.querySelector("#riddle_answer");
 const errorMsg = document.querySelector(".error-msg");
+const membershipApproveBtn = document.querySelector(".member-btn-approve");
+const membershipDenyBtn = document.querySelector(".member-btn-deny");
 
-dialogOpenBtn.addEventListener("click", (e) => {
-  dialog.showModal();
-});
+if (dialogOpenBtn) {
+  // this btn will be hide when user already send membership upgrade request.
+  dialogOpenBtn.addEventListener("click", (e) => {
+    dialog.showModal();
+  });
+}
 
 dialog.addEventListener("click", (e) => {
   const dialogDimension = dialog.getBoundingClientRect();
@@ -39,3 +44,25 @@ membershipForm.addEventListener("submit", async (e) => {
     e.target.reset();
   }
 });
+
+console.log(membershipApproveBtn, membershipDenyBtn);
+if (membershipApproveBtn) {
+  // add event listener when the user is an admin
+  membershipApproveBtn.addEventListener("click", async (e) => {
+    console.log("Approve request");
+    const [userId, userName] = String(e.target.dataset.member).split(";");
+    await fetch("/profile/:id", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId, userName }),
+    });
+  });
+}
+if (membershipDenyBtn) {
+  // add event listener when the user is an admin
+  membershipDenyBtn.addEventListener("click", () => {
+    console.log("Deny request");
+  });
+}

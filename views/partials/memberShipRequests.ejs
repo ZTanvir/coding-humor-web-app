@@ -1,0 +1,19 @@
+<p class="member-table-header" data-center="center-text">Username</p>
+<p class="member-table-header" data-center="center-text">Actions</p>
+<div data-center="center-text" class="member-username">
+  <%=member.username %>
+</div>
+<div class="member-btns">
+  <button
+    data-member="<%=member.user_id%>;<%=member.username%>"
+    class="member-btn-approve"
+  >
+    Approve
+  </button>
+  <button
+    data-member="<%=member.user_id%>;<%=member.username%>"
+    class="member-btn-deny"
+  >
+    Deny
+  </button>
+</div>
