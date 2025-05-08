@@ -65,7 +65,19 @@ if (membershipApproveBtn) {
 }
 if (membershipDenyBtn) {
   // add event listener when the user is an admin
-  membershipDenyBtn.addEventListener("click", () => {
-    console.log("Deny request");
+  membershipDenyBtn.addEventListener("click", async (e) => {
+    console.log("deny request");
+    const [userId, userName] = String(e.target.dataset.member).split(";");
+    const response = await fetch("/profile/deny-membership", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId, userName }),
+    });
+    // refresh on user membership status update
+    if (response.status === 200) {
+      window.location.reload();
+    }
   });
 }

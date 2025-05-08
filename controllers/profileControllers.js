@@ -91,4 +91,20 @@ const updateMemberShip = async (req, res) => {
   return res.sendStatus(200);
 };
 
-module.exports = { getProfile, updateMemberShip };
+const denyMemberShip = async (req, res) => {
+  const { userId, userName } = req.body;
+
+  // deny member update status
+  try {
+    const result = await db.query(
+      "UPDATE users SET is_member=$1 WHERE user_id=$2 AND username=$3;",
+      ["false", userId, userName]
+    );
+    console.log("Rows updated:", result.rowCount);
+  } catch (error) {
+    console.error(`Error on deny ${userName} membership status`, error);
+  }
+  return res.sendStatus(200);
+};
+
+module.exports = { getProfile, updateMemberShip, denyMemberShip };

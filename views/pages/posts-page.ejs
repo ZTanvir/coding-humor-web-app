@@ -11,7 +11,7 @@
     <main>
       <%if(locals.currentUser !== undefined){ %>
       <!-- User has logged in-->
-      <% if(locals.currentUser.isMember){ %>
+      <% if(locals.currentUser.is_member==="true"){ %>
       <!-- User can add post -->
       <form action="/posts/add" method="post">
         <div>
