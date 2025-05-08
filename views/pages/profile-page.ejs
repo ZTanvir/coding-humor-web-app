@@ -103,10 +103,13 @@
           class="membership-requests"
           style="--gutter: 1rem"
           data-split="fraction:1/1"
-          data-center
+          data-center="center-text"
         >
           <%updateMembershipRequest.forEach(member=>{%>
           <%-include("../partials/memberShipRequests",{member}) %> <%});%>
+          <%if(updateMembershipRequest.length === 0){ %>
+          <p class="no-membership">No membership update request.</p>
+          <%}%>
         </section>
         <%}%>
         <div class="user-posts">

@@ -67,10 +67,28 @@ const getProfile = async (req, res) => {
 };
 
 const updateMemberShip = async (req, res) => {
-  console.log("I am updateMemberShip route");
-
-  console.log("request body:", req.body);
   const { userId, userName } = req.body;
+  // update user as a member
+  try {
+    const result = await db.query(
+      "UPDATE users SET is_member=$1 WHERE user_id=$2 AND username=$3;",
+      ["true", userId, userName]
+    );
+    console.log("Rows updated:", result.rowCount);
+  } catch (error) {
+    console.error(`Error on update ${userName} membership status`, error);
+  }
+  // deny member update status
+  // try {
+  //   const result = await db.query(
+  //     "UPDATE users SET is_member=$1 WHERE user_id=$2 AND username=$3;",
+  //     ["true", userId, userName]
+  //   );
+  //   console.log("Rows updated:", result.rowCount);
+  // } catch (error) {
+  //   console.error(`Error on update ${userName} membership status`, error);
+  // }
+  return res.sendStatus(200);
 };
 
 module.exports = { getProfile, updateMemberShip };

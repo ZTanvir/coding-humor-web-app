@@ -45,19 +45,22 @@ membershipForm.addEventListener("submit", async (e) => {
   }
 });
 
-console.log(membershipApproveBtn, membershipDenyBtn);
 if (membershipApproveBtn) {
   // add event listener when the user is an admin
   membershipApproveBtn.addEventListener("click", async (e) => {
     console.log("Approve request");
     const [userId, userName] = String(e.target.dataset.member).split(";");
-    await fetch("/profile/:id", {
+    const response = await fetch("/profile/update-membership", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ userId, userName }),
     });
+    // refresh on user membership status update
+    if (response.status === 200) {
+      window.location.reload();
+    }
   });
 }
 if (membershipDenyBtn) {
