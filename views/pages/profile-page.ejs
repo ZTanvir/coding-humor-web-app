@@ -8,10 +8,6 @@
   </head>
   <body id="profile-page">
     <header><%- include("../partials/navbar") %></header>
-    <p><%= JSON.stringify(userData) %></p>
-    <p><%= JSON.stringify(locals.currentUser) %></p>
-    <p><%= JSON.stringify(updateMembershipRequest) %></p>
-
     <main>
       <% if(userData){ %>
       <!-- user found -->
