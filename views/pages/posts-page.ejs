@@ -18,21 +18,37 @@
         data-stack
         data-center
         id="post-form"
-        action="/posts/add"
+        action="/posts"
         method="post"
       >
-        <div>
-          <label for="post_tile">Post title:</label>
-          <input type="text" name="post_tile" id="post_tile" />
+        <div data-stack style="--gutter: 0.25rem">
+          <input
+            type="text"
+            name="post_title"
+            id="post_tilte"
+            placeholder="post title"
+            values="<%=postData['post_title']%>"
+            required
+          />
+          <p class="error-msg">
+            <%errors.forEach(error=>{if(error.path==="post_title"){ %>
+            <%=error.msg %> <% }});%>
+          </p>
         </div>
-        <div>
-          <label for="post_descriptions">Post:</label>
+        <div data-stack style="--gutter: 0.25rem">
           <textarea
             name="post_descriptions"
             id="post_descriptions"
-            cols="30"
             rows="10"
-          ></textarea>
+            placeholder="write something ..."
+            required
+          >
+<%=postData['post_descriptions']%></textarea
+          >
+          <p class="error-msg">
+            <%errors.forEach(error=>{if(error.path==="post_descriptions"){ %>
+            <%=error.msg %> <% }});%>
+          </p>
         </div>
         <button data-inline style="--gutter: 0.25rem" type="submit">
           <span

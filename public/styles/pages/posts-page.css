@@ -52,18 +52,25 @@ footer {
   border-bottom: 1px solid var(--text-color);
 }
 
-#post-form label {
+#post-form ::placeholder {
   color: var(--text-color);
-  font-size: 1.2rem;
+  font-size: 1rem;
+  opacity: 0.8; /* Firefox */
 }
 
 #post-form button[type="submit"] {
   justify-self: end;
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
-  font-size: 1.25rem;
+  font-size: 1rem;
   border: 0;
+  background-color: var(--content-bg-color);
   cursor: pointer;
+  color: white;
+}
+.error-msg {
+  color: var(--error-color);
+  font-size: 1rem;
 }
 
 [data-inline] {
