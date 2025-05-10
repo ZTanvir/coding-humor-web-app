@@ -31,6 +31,41 @@ footer {
   margin-top: auto;
 }
 
+#post-form {
+  background-color: var(--form-bg);
+  padding: 1rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+#post-form input,
+#post-form textarea {
+  width: 100%;
+  line-height: 1;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  background-color: var(--content-bg-color);
+  color: white;
+  border-bottom: 1px solid var(--text-color);
+}
+
+#post-form label {
+  color: var(--text-color);
+  font-size: 1.2rem;
+}
+
+#post-form button[type="submit"] {
+  justify-self: end;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  border: 0;
+  cursor: pointer;
+}
+
 [data-inline] {
   --gutter: initial;
   display: grid;
@@ -44,4 +79,9 @@ footer {
   display: grid;
   gap: var(--gutter, 0rem);
   align-content: start;
+}
+[data-center] {
+  max-inline-size: var(--maxWidth, 100%);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
 }

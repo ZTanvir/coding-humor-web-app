@@ -13,11 +13,20 @@
       <!-- User has logged in-->
       <% if(locals.currentUser.is_member==="true"){ %>
       <!-- User can add post -->
-      <form action="/posts/add" method="post">
+      <form
+        style="--gutter: 0.75rem"
+        data-stack
+        data-center
+        id="post-form"
+        action="/posts/add"
+        method="post"
+      >
         <div>
+          <label for="post_tile">Post title:</label>
           <input type="text" name="post_tile" id="post_tile" />
         </div>
         <div>
+          <label for="post_descriptions">Post:</label>
           <textarea
             name="post_descriptions"
             id="post_descriptions"
@@ -25,7 +34,7 @@
             rows="10"
           ></textarea>
         </div>
-        <button type="submit">
+        <button data-inline style="--gutter: 0.25rem" type="submit">
           <span
             ><svg
               xmlns="http://www.w3.org/2000/svg"
