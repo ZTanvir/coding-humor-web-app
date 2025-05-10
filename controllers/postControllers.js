@@ -12,8 +12,8 @@ const validatePost = [
     .not()
     .isEmpty()
     .withMessage("Please add your post")
-    .isLength({ max: 10 })
-    .withMessage("Post must be within 1000 character.")
+    .isLength({ max: 250 })
+    .withMessage("Post must be within 250 character.")
     .trim()
     .escape(),
 ];
