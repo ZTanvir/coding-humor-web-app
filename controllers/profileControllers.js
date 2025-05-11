@@ -1,4 +1,5 @@
 const db = require("../config/database");
+const { decode } = require("html-entities");
 
 const getProfile = async (req, res) => {
   const userId = req.params.id;
@@ -8,7 +9,6 @@ const getProfile = async (req, res) => {
 
   // check the answer to update membership status
   const { riddle_answer } = req.query;
-  console.log({ riddle_answer }, res.locals.currentUser);
   if (riddle_answer) {
     const currentLoginUserId = res.locals.currentUser.user_id;
     try {
@@ -39,6 +39,10 @@ const getProfile = async (req, res) => {
       userId,
     ]);
     posts = [...rows];
+    // decode post so html entires replace by their value
+    posts = posts.map((p) => {
+      return { ...p, post: decode(p.post) };
+    });
   } catch (error) {
     console.log("Error while getting posts table data:", error);
   }

@@ -108,7 +108,7 @@
           <%}%>
         </section>
         <%}%>
-        <div class="user-posts">
+        <div class="user-posts" data-stack style="--gutter: 1rem">
           <% if(posts.length>0){ %> <% posts.forEach(post => {%> <%-
           include("../partials/post",{post}) %> <%}); %> <% }else{ %>
           <h2 class="not-found-msg" data-center="center-text">
