@@ -1,5 +1,6 @@
 const db = require("../config/database");
 const { body, validationResult } = require("express-validator");
+const { decode } = require("html-entities");
 
 const validatePost = [
   body("post_title")
@@ -28,25 +29,49 @@ const getPosts = async (req, res) => {
 };
 
 const addPost = async (req, res) => {
-  console.log("I am add post router", req.body);
-  const { post_title, post_descriptions } = req.body;
-  const { rows } = await db.query(
-    "SELECT username,post_id,title,created_at,post FROM users JOIN posts ON users.user_id=posts.user_id;"
-  );
-  const posts = [...rows];
-
   const errors = validationResult(req);
+  let posts = [];
+  const userId = res.locals.currentUser.user_id;
+  const { post_title, post_descriptions } = req.body;
+
+  try {
+    const { rows } = await db.query(
+      "SELECT username,post_id,title,created_at,post FROM users JOIN posts ON users.user_id=posts.user_id;"
+    );
+    posts = [...rows];
+  } catch (error) {
+    console.error("Error on getting post from posts table:", error);
+  }
 
   if (!errors.isEmpty()) {
+    console.log(decode(post_descriptions));
+
     return res.render("pages/posts-page", {
       posts,
       errors: errors.array(),
       postData: {
-        post_title,
-        post_descriptions,
+        post_title: decode(post_title),
+        post_descriptions: decode(post_descriptions),
       },
     });
   }
+
+  // add post to posts table
+  try {
+    const result = await db.query(
+      "INSERT INTO posts(user_id,title,post) VALUES ($1,$2,$3)",
+      [userId, post_title, post_descriptions]
+    );
+    console.log("Rows updated:", result.rowCount);
+  } catch (error) {
+    console.error("Error on adding data to posts table:", error);
+  }
+
+  return res.render("pages/posts-page", {
+    posts,
+    errors: errors.array(),
+    postData: {},
+  });
 };
 
 module.exports = { getPosts, addPost, validatePost };
