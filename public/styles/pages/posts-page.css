@@ -36,6 +36,7 @@ footer {
   padding: 1rem;
   overflow: hidden;
   border-radius: 0.5rem;
+  width: 100%;
 }
 
 #post-form input,

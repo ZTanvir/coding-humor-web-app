@@ -8,7 +8,7 @@
   </head>
   <body id="posts-page">
     <header><%- include("../partials/navbar") %></header>
-    <main>
+    <main data-stack style="--gutter: 1rem">
       <%if(locals.currentUser !== undefined){ %>
       <!-- User has logged in-->
       <% if(locals.currentUser.is_member==="true"){ %>

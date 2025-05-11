@@ -23,7 +23,11 @@ const getPosts = async (req, res) => {
   const { rows } = await db.query(
     "SELECT username,post_id,title,created_at,post FROM users JOIN posts ON users.user_id=posts.user_id;"
   );
-  const posts = [...rows];
+  let posts = [...rows];
+  // decode post so html entires replace by their value
+  posts = posts.map((p) => {
+    return { ...p, post: decode(p.post) };
+  });
 
   return res.render("pages/posts-page", { posts, errors: [], postData: {} });
 };
@@ -43,9 +47,12 @@ const addPost = async (req, res) => {
     console.error("Error on getting post from posts table:", error);
   }
 
-  if (!errors.isEmpty()) {
-    console.log(decode(post_descriptions));
+  // decode post so html entires replace by their value
+  posts = posts.map((p) => {
+    return { ...p, post: decode(p.post) };
+  });
 
+  if (!errors.isEmpty()) {
     return res.render("pages/posts-page", {
       posts,
       errors: errors.array(),
