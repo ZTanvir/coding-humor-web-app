@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/auth", usersRouter);
-app.use("/", postsRouter);
+app.use("/posts", postsRouter);
 app.use("/profile", profileRouter);
 
 app.get("/", async (req, res) => {

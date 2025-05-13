@@ -18,7 +18,8 @@
         </svg>
       </span>
       <span class="post-title__text"><%= post.title %></span>
-      <div class="delete-post" title="delete">
+      <%if(locals.currentUser && locals.currentUser.is_admin=== true){%>
+      <div class="delete-post" title="delete" data-postId="<%=post.post_id%>">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="20px"
@@ -32,14 +33,15 @@
         </svg>
         <dialog class="delete-post-concent">
           <p>Are you sure?</p>
-          <form action="/delete-post/<%=post.post_id%>" method="post">
+          <form method="dialog">
             <div style="--gutter: 0.5rem" data-inline>
-              <button>Yes</button>
+              <button class="confirm-btn">Yes</button>
               <button formmethod="dialog">No</button>
             </div>
           </form>
         </dialog>
       </div>
+      <% } %>
     </div>
     <div style="--gutter: 1rem" data-inline class="post-author-time">
       <span style="--gutter: 0.5rem" data-inline class="post-author">

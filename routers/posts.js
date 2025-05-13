@@ -2,12 +2,10 @@ const express = require("express");
 const postRoutes = express.Router();
 const postControllers = require("../controllers/postControllers");
 
-postRoutes.get("/posts", postControllers.getPosts);
+postRoutes.get("/", postControllers.getPosts);
 
-postRoutes.post(
-  "/posts",
-  postControllers.validatePost,
-  postControllers.addPost
-);
+postRoutes.post("/", postControllers.validatePost, postControllers.addPost);
+
+postRoutes.delete("/delete-post/:id", postControllers.deletePost);
 
 module.exports = postRoutes;

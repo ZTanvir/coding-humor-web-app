@@ -81,4 +81,18 @@ const addPost = async (req, res) => {
   });
 };
 
-module.exports = { getPosts, addPost, validatePost };
+const deletePost = async (req, res) => {
+  console.log("I am delete post route.");
+  const postId = req.params.id;
+
+  try {
+    const result = await db.query("DELETE FROM posts WHERE post_id=$1", [
+      postId,
+    ]);
+  } catch (error) {
+    console.error("Error on deleting data from posts table:", error);
+  }
+  return res.sendStatus(200);
+};
+
+module.exports = { getPosts, addPost, validatePost, deletePost };
