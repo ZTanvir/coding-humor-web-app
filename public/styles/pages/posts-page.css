@@ -73,6 +73,13 @@ footer {
   color: var(--error-color);
   font-size: 1rem;
 }
+.delete-post {
+  cursor: pointer;
+  position: relative;
+}
+.delete-post-concent {
+  position: absolute;
+}
 
 [data-inline] {
   --gutter: initial;
