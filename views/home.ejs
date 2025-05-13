@@ -11,7 +11,7 @@
     <main
       data-stack
       data-center="center-text center-children"
-      style="--gutter: 0.5rem"
+      style="--gutter: 1rem"
     >
       <h1 class="title">CodingHumor</h1>
       <p class="subtitle">Where Code Meets Comedy</p>
@@ -38,7 +38,11 @@
         </button>
       </p>
 
-      <div class="sample-blog-posts"></div>
+      <div data-stack style="--gutter: 1rem" class="sample-blog-posts">
+        <% posts.forEach(p => { %>
+        <section class="blog-post"><%= p.post %></section>
+        <% }) %>
+      </div>
     </main>
     <footer><%-include("partials/footer") %></footer>
   </body>

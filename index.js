@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
+const { decode } = require("html-entities");
 const expressSession = require("express-session");
 const passport = require("passport");
 const pgSession = require("connect-pg-simple")(expressSession);
@@ -45,7 +46,22 @@ app.use("/", postsRouter);
 app.use("/profile", profileRouter);
 
 app.get("/", async (req, res) => {
-  res.render("home", { title: "Coding Humor" });
+  let posts = [];
+  try {
+    // shuffle post
+    const { rows } = await db.query(
+      "SELECT post FROM posts ORDER BY RANDOM() LIMIT 3;"
+    );
+    posts = [...rows];
+    posts = posts.map((p) => {
+      return { ...p, post: decode(p.post) };
+    });
+    console.log(posts);
+  } catch (error) {
+    console.log("Error on getting posts from posts table ", error);
+  }
+
+  res.render("home", { title: "Coding Humor", posts });
 });
 
 module.exports = app;
