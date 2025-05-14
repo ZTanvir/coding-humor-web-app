@@ -14,11 +14,11 @@ userRoute.get("/sign-in", userControllers.getUserLoginForm);
 userRoute.post(
   "/sign-in",
   userControllers.signInValidator,
+  userControllers.postUserLoginForm,
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/auth/sign-up",
-  }),
-  userControllers.postUserLoginForm
+  })
 );
 
 userRoute.get("/sign-out", userControllers.logOut);

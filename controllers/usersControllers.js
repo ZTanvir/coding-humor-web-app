@@ -121,8 +121,11 @@ const getUserLoginForm = (req, res) => {
   });
 };
 const postUserLoginForm = (req, res) => {
+  console.log("post login form");
   const errors = validationResult(req);
   const { username, password } = req.body;
+
+  console.log("Form error", errors);
 
   if (errors.isEmpty()) {
   }
