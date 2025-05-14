@@ -56,7 +56,6 @@ app.get("/", async (req, res) => {
     posts = posts.map((p) => {
       return { ...p, post: decode(p.post) };
     });
-    console.log(posts);
   } catch (error) {
     console.log("Error on getting posts from posts table ", error);
   }

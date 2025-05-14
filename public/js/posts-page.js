@@ -3,10 +3,13 @@ const allDeletePostBtn = document.querySelectorAll(".delete-post");
 if (allDeletePostBtn.length > 0) {
   allDeletePostBtn.forEach((deletePostBtn) => {
     deletePostBtn.addEventListener("click", (e) => {
+      console.log("x axis", e.clientX);
+
       const deletePostDialog = e.currentTarget.lastElementChild;
       const { postid } = deletePostBtn.dataset;
-
       const confirmDeleteBtn = deletePostDialog.querySelector(".confirm-btn");
+      console.log(deletePostDialog.hasAttribute("open"));
+
       //   show the dialog for the specific post
       deletePostDialog.show();
 

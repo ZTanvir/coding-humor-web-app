@@ -22,6 +22,22 @@
   color: white;
 }
 
+.delete-post {
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+
+.delete-post-concent[open] {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  width: 150px;
+}
+
 [data-inline] {
   --gutter: initial;
   display: grid;

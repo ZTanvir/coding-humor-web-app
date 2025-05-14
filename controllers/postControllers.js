@@ -38,21 +38,21 @@ const addPost = async (req, res) => {
   const userId = res.locals.currentUser.user_id;
   const { post_title, post_descriptions } = req.body;
 
-  try {
-    const { rows } = await db.query(
-      "SELECT username,post_id,title,created_at,post FROM users JOIN posts ON users.user_id=posts.user_id;"
-    );
-    posts = [...rows];
-  } catch (error) {
-    console.error("Error on getting post from posts table:", error);
-  }
-
-  // decode post so html entires replace by their value
-  posts = posts.map((p) => {
-    return { ...p, post: decode(p.post) };
-  });
-
   if (!errors.isEmpty()) {
+    try {
+      const { rows } = await db.query(
+        "SELECT username,post_id,title,created_at,post FROM users JOIN posts ON users.user_id=posts.user_id;"
+      );
+      posts = [...rows];
+    } catch (error) {
+      console.error("Error on getting post from posts table:", error);
+    }
+
+    // decode post so html entires replace by their value
+    posts = posts.map((p) => {
+      return { ...p, post: decode(p.post) };
+    });
+
     return res.render("pages/posts-page", {
       posts,
       errors: errors.array(),
@@ -73,6 +73,20 @@ const addPost = async (req, res) => {
   } catch (error) {
     console.error("Error on adding data to posts table:", error);
   }
+
+  try {
+    const { rows } = await db.query(
+      "SELECT username,post_id,title,created_at,post FROM users JOIN posts ON users.user_id=posts.user_id;"
+    );
+    posts = [...rows];
+  } catch (error) {
+    console.error("Error on getting post from posts table:", error);
+  }
+
+  // decode post so html entires replace by their value
+  posts = posts.map((p) => {
+    return { ...p, post: decode(p.post) };
+  });
 
   return res.render("pages/posts-page", {
     posts,
