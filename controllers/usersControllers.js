@@ -120,7 +120,7 @@ const getUserLoginForm = (req, res) => {
     newUser,
   });
 };
-const postUserLoginForm = (req, res) => {
+const postUserLoginForm = (req, res, next) => {
   const errors = validationResult(req);
   const { username, password } = req.body;
 
@@ -131,6 +131,7 @@ const postUserLoginForm = (req, res) => {
       newUser: "0",
     });
   }
+  next();
 };
 
 const logOut = (req, res, next) => {

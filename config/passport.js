@@ -5,6 +5,7 @@ const bcryptjs = require("bcryptjs");
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
+    console.error("I am in local passport");
     try {
       const { rows } = await db.query("SELECT * FROM users WHERE username=$1", [
         username,
