@@ -104,7 +104,7 @@ const signInValidator = [
           encryptedPassword
         );
 
-        if (!comparePassword) {
+        if (value && !comparePassword) {
           throw new Error("Incorrect password.");
         }
       }
@@ -121,19 +121,16 @@ const getUserLoginForm = (req, res) => {
   });
 };
 const postUserLoginForm = (req, res) => {
-  console.log("post login form");
   const errors = validationResult(req);
   const { username, password } = req.body;
 
-  console.log("Form error", errors);
-
-  if (errors.isEmpty()) {
+  if (!errors.isEmpty()) {
+    return res.render("../views/pages/login-page", {
+      errors: errors["errors"],
+      formData: { username, password },
+      newUser: "0",
+    });
   }
-  return res.render("../views/pages/login-page", {
-    errors: errors["errors"],
-    formData: { username, password },
-    newUser: "0",
-  });
 };
 
 const logOut = (req, res, next) => {
