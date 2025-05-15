@@ -53,3 +53,9 @@
   gap: var(--gutter, 0px);
   align-content: start;
 }
+
+@media screen and (max-width: 600px) {
+  .delete-post-concent[open] {
+    left: -150px;
+  }
+}
