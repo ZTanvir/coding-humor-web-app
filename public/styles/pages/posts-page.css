@@ -74,12 +74,21 @@ footer {
   font-size: 1rem;
 }
 
+.post-text-counter-wrapper {
+  background-color: var(--content-bg-color);
+  padding: 0.25rem 0.75rem;
+  color: white;
+}
+
 [data-inline] {
   --gutter: initial;
   display: grid;
   grid-auto-flow: column;
   gap: var(--gutter, 0px);
   justify-content: start;
+}
+[data-inline~="justify:space-between"] {
+  justify-content: space-between;
 }
 
 [data-stack] {

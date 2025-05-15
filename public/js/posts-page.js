@@ -1,4 +1,6 @@
 const allDeletePostBtn = document.querySelectorAll(".delete-post");
+const postDescriptions = document.querySelector("#post_descriptions");
+const postCounter = document.querySelector(".post-text-counter");
 
 if (allDeletePostBtn.length > 0) {
   allDeletePostBtn.forEach((deletePostBtn) => {
@@ -22,5 +24,17 @@ if (allDeletePostBtn.length > 0) {
         }
       });
     });
+  });
+}
+
+if (postDescriptions) {
+  postDescriptions.addEventListener("input", (e) => {
+    const totalCharacter = String(e.target.value).length;
+    if (totalCharacter > 250) {
+      postCounter.style.color = "red";
+    } else if (totalCharacter <= 250) {
+      postCounter.style.color = "white";
+    }
+    postCounter.textContent = `${String(e.target.value).length}`;
   });
 }
