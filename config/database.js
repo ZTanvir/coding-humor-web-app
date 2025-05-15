@@ -14,7 +14,7 @@ const createDbTable = async () => {
   username VARCHAR (50) UNIQUE NOT NULL,
   password VARCHAR (255) NOT NULL,
   is_admin BOOLEAN NOT NULL,
-  is_member BOOLEAN NOT NULL
+  is_member VARCHAR (15) NOT NULL
   );
 
   CREATE TABLE IF NOT EXISTS posts(
@@ -33,18 +33,6 @@ const createDbTable = async () => {
     console.error("Error on creating users and posts table,", error);
   }
 };
-const alterTable = async () => {
-  try {
-    await pool.query(
-      "ALTER TABLE users ALTER COLUMN is_member TYPE VARCHAR (15);"
-    );
-  } catch (error) {
-    console.error(
-      "Error on altering is_member column from users table,",
-      error
-    );
-  }
-};
 
 const connectToDb = async () => {
   try {
@@ -57,6 +45,5 @@ const connectToDb = async () => {
 };
 connectToDb();
 createDbTable();
-// alterTable();
 
 module.exports = new Pool({ connectionString });
