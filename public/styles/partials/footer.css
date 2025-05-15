@@ -2,13 +2,15 @@ footer {
   background-color: var(--content-bg-color);
   color: var(--text-color);
   padding: 1rem;
+}
+footer .footer-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.125rem;
 }
-footer small {
+.footer-author-info {
   display: flex;
-  flex-direction: row;
   gap: 0.125rem;
 }
 .footer-link {
@@ -21,4 +23,11 @@ footer small {
 .footer-img {
   width: 15px;
   height: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  footer .footer-wrapper {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 }
