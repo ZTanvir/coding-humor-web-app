@@ -39,7 +39,7 @@ const getProfile = async (req, res) => {
       userId,
     ]);
     posts = [...rows];
-    // decode post so html entires replace by their value
+    // decode post so html entries replace by their value
     posts = posts.map((p) => {
       return { ...p, post: decode(p.post) };
     });
