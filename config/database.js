@@ -3,7 +3,6 @@ const utils = require("../utils/config");
 const { Pool } = pg;
 
 const connectionString = utils.pgConnectionString;
-console.log(connectionString);
 
 const pool = new Pool({ connectionString });
 

@@ -23,7 +23,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "start":"cross-env NODE_ENV=production node app.js",
+    "dev:local": "cross-env NODE_ENV=developmentLocal nodemon app.js",
+    "dev:vercel": "cross-env NODE_ENV=developmentVercel nodemon app.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
@@ -40,6 +42,10 @@
     "pg": "^8.14.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^3.1.9"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }

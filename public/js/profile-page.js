@@ -48,7 +48,7 @@ membershipForm.addEventListener("submit", async (e) => {
 if (membershipApproveBtn) {
   // add event listener when the user is an admin
   membershipApproveBtn.addEventListener("click", async (e) => {
-    console.log("Approve request");
+    // Approve request
     const [userId, userName] = String(e.target.dataset.member).split(";");
     const response = await fetch("/profile/update-membership", {
       method: "POST",
@@ -66,7 +66,7 @@ if (membershipApproveBtn) {
 if (membershipDenyBtn) {
   // add event listener when the user is an admin
   membershipDenyBtn.addEventListener("click", async (e) => {
-    console.log("deny request");
+    // Deny request
     const [userId, userName] = String(e.target.dataset.member).split(";");
     const response = await fetch("/profile/deny-membership", {
       method: "POST",

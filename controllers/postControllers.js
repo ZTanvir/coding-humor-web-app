@@ -96,7 +96,6 @@ const addPost = async (req, res) => {
 };
 
 const deletePost = async (req, res) => {
-  console.log("I am delete post route.");
   const postId = req.params.id;
 
   try {
