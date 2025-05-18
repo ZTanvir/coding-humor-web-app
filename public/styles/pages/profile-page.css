@@ -134,3 +134,9 @@ main {
 footer {
   margin-top: auto;
 }
+
+@media screen and (min-width: 600px) {
+  .member-btns {
+    gap: 0.5rem;
+  }
+}
