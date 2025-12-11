@@ -63,4 +63,8 @@ app.get("/", async (req, res) => {
   res.render("home", { title: "Coding Humor", posts });
 });
 
+app.get("/version", (req, res) => {
+  res.send("1");
+});
+
 module.exports = app;
