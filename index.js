@@ -67,4 +67,8 @@ app.get("/version", (req, res) => {
   res.send("1");
 });
 
+app.get("/health", (req, res) => {
+  res.send("ok");
+});
+
 module.exports = app;
