@@ -7,7 +7,7 @@ jobs:
   main:
     name: Deploy to Render
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != "push" }}
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@main #consider using pin for dependabot auto update
