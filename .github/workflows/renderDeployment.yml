@@ -7,15 +7,10 @@ jobs:
   main:
     name: Deploy to Render
     runs-on: ubuntu-latest
-    if: ${{github.event_name != "push"}}
+    if: ${{ github.event_name != "push" }}
     steps:
       - name: Checkout code
         uses: actions/checkout@main #consider using pin for dependabot auto update
-
-      - name: Verify secrets exists
-        run: |
-          if [ -z "${{ secrets.RENDER_SERVICE_ID }}" ]; then echo "Missing service ID"; exit 1; fi
-          if [ -z "${{ secrets.RENDER_API_KEY }}" ]; then echo "Missing API key"; exit 1; fi
 
       - name: Create deployment
         uses: sws2apps/render-deployment@main #consider using pin for dependabot auto update
