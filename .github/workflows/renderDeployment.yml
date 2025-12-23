@@ -3,9 +3,14 @@ on:
   push:
     branches:
       - main
+
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
 jobs:
   main:
-    name: Deploy to Render
+    name: deploy_to_render
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
@@ -17,3 +22,13 @@ jobs:
         with:
           serviceId: ${{ secrets.RENDER_SERVICE_ID }}
           apiKey: ${{ secrets.RENDER_API_KEY }}
+
+  tag_release:
+    needs: [deploy_to_render]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
