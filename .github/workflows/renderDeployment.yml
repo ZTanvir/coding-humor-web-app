@@ -32,3 +32,4 @@ jobs:
         with:
           url: https://coding-humor-web-app.onrender.com/health
           max-attempts: 3
+      - name: Job has run successfully
