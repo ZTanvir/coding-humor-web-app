@@ -22,14 +22,3 @@ jobs:
         with:
           serviceId: ${{ secrets.RENDER_SERVICE_ID }}
           apiKey: ${{ secrets.RENDER_API_KEY }}
-
-  ping_server:
-    name: send get request to ping_server
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check the deployed service URL.
-        uses: jtalk/url-health-check-action@v4
-        with:
-          url: https://coding-humor-web-app.onrender.com/health
-          max-attempts: 3
-      - name: Job has run successfully
