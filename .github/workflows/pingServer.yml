@@ -1,19 +1,23 @@
-name: ping https://coding-humor-web-app.onrender.com/health everyday at 4pm
+name: ping health endpoint everyday at 4pm
 
 on:
   schedule:
+    # Runs at 16:00 UTC every day
     - cron: "0 16 * * *"
+  workflow_dispatch: # Allows you to trigger it manually for testing
 
 jobs:
   ping_server:
-    name: send get request to ping_server
+    name: send get request to health endpoint
     runs-on: ubuntu-latest
     steps:
       - name: Check the deployed service URL
-        if: github.event.schedule != '0 16 * * *'
         uses: jtalk/url-health-check-action@v4
         with:
           url: https://coding-humor-web-app.onrender.com/health
+          # follow-redirect: false # Optional: set if needed
           max-attempts: 3
-      - name: Job has run successfully
-        run: echo "Job has run successfully"
+          retry-delay: 5s
+
+      - name: Log Success
+        run: echo "Ping to health endpoint was successful."
