@@ -6,14 +6,14 @@ on:
 
 jobs:
   ping_server:
-  name: send get request to ping_server
-  runs-on: ubuntu-latest
-  steps:
-    - name: Check the deployed service URL
-      if: github.event.schedule != "0 16 * * *"
-      uses: jtalk/url-health-check-action@v4
-      with:
-        url: https://coding-humor-web-app.onrender.com/health
-        max-attempts: 3
-    - name: Job has run successfully
-      run: echo "Job has run successfully"
+    name: send get request to ping_server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the deployed service URL
+        if: github.event.schedule != "0 16 * * *"
+        uses: jtalk/url-health-check-action@v4
+        with:
+          url: https://coding-humor-web-app.onrender.com/health
+          max-attempts: 3
+      - name: Job has run successfully
+        run: echo "Job has run successfully"
