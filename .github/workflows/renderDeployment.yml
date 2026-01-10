@@ -23,16 +23,6 @@ jobs:
           serviceId: ${{ secrets.RENDER_SERVICE_ID }}
           apiKey: ${{ secrets.RENDER_API_KEY }}
 
-  tag_release:
-    needs: [deploy_to_render]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: patch
-
   ping_server:
     name: send get request to ping_server
     runs-on: ubuntu-latest
